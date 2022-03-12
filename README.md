@@ -42,6 +42,14 @@ pip install -r requirements.txt
 
 ### 2) 다양한 Loss 학습 및 적용
 - **CrossEntropy Loss**   
+![image](https://user-images.githubusercontent.com/53209003/156934799-f7ad4c0c-5f38-46af-9342-16a008444f26.png)     
+엔트로피 개념이 손실(loss)함수에서 사용된 사례로 볼 수 있음. 만약 이진분류 태스크가 아닌 N개의 라벨 중 하나로 분류하는 태스크일 때, 입력 데이터가 모델을 통과할 경우 소프트맥스 함수에 의해 각 클래스에 속할 확률이 계산됩니다(Q(x)). 실제 값의 경우, 정답인 클래스만 확률이 1이고, 나머지는 모두 0인 확률분포에 해당합니다(P(x)). 이 두 확률분포의 차이를 Cross Entropy 수식 형태로 표현하여 계산할 수 있으며, Cross Entropy를 줄이기 위한 파라미터를 구하는 것이 negative log likelohood를 최소화하는 파라미터를 구하는 것과 동일하다고 볼 수 있습니다.
+
+- **Focal Loss**   
+![image](https://user-images.githubusercontent.com/53209003/156935353-b9c58874-17bd-4cf9-b437-147c4f6d568a.png)    
+기존의 Cross Entropy의 경우 분류태스크에서 분류할 라벨별로 데이터가 균등한 비율로 존재할 경우 학습에 문제가 없습니다. 하지만, 라벨 비율이 불균형한 데이터에 있어서는 학습에 문제를 일으킬 수 있습니다. 이는, 데이터 라벨 비중이 높아 샘플 비중이 높은 Easy Negative 샘플에 대해 중점적으로 학습하게되기 때문에 발생합니다. Focal Loss는 기존의 Cross Entropy에 가중치를 곱함으로써, Easy Negative 샘플에 대한 학습에 중점적으로 뒀던 학습과정에 패널티를 부여할 수 있습니다. 이에 따라, 데이터 라벨 비중이 낮은 Hard Negative 샘플에 대해서도 추가적으로 학습할 수 있는 구조를 취하여 불균형 데이터에 효과적임을 알 수 있었습니다.
+
+- **F1 Loss**   
 F1 score가 정밀도(Precision, Positive로 예측한 것중 실제 Positive 비율)와 재현율(Recall, 실제 Positive인 것 중 Positive로 예측한 비율)을 함께 고려한 점수 metric인만큼, F1 Loss 역시 
 클래스 별로 정밀도 및 재현율을 함께 고려했을 것으로 생각되나, 좀 더 학습이 필요한 상황입니다. 
 
@@ -49,7 +57,7 @@ F1 score가 정밀도(Precision, Positive로 예측한 것중 실제 Positive �
 
 ### 3)WanDB 사용을 통한 효율적인 모델 비교 및 하이퍼 파라미터 튜닝 
 ![image](https://user-images.githubusercontent.com/53209003/156936616-585a1e1d-2010-4ec2-80c7-97c39c9d6f71.png)    
-Wandb Teams를 구성하여, 실시간으로 각 팀원들이 실행 중인 모델들의 Train,Validation에서의 성능지표(acc, f1-macro, loss)들을 에폭을 기준으로 비교해볼 수 있었습니다. 이릍 통해, 비대면임에도 불구하고 함께 효율적으로 모델 비교 및 선정이 가능하였습니다. 이외에도, Loss, Optimizer, Learningrate 등에 따른 하이퍼 파라미터 튜닝에 있어서도 효율적으로 최적 파라미터를 찾을 수 있었음. 하지만, 제출성능이 Validation 성능과는 차이가 있어, 100% 완벽한 판단을 내리기에는 어려움이 있어 보조적인 판단 지표로 활용하는 것이 적절해보입니다.
+> Wandb Teams를 구성하여, 실시간으로 각 팀원들이 실행 중인 모델들의 Train,Validation에서의 성능지표(acc, f1-macro, loss)들을 에폭을 기준으로 비교해볼 수 있었습니다. 이릍 통해, 비대면임에도 불구하고 함께 효율적으로 모델 비교 및 선정이 가능하였습니다. 이외에도, Loss, Optimizer, Learningrate 등에 따른 하이퍼 파라미터 튜닝에 있어서도 효율적으로 최적 파라미터를 찾을 수 있었음. 하지만, 제출성능이 Validation 성능과는 차이가 있어, 100% 완벽한 판단을 내리기에는 어려움이 있어 보조적인 판단 지표로 활용하는 것이 적절해보입니다.
 
 ## 추후 보완하면 진행하면 좋은 것들
 - **공통된 Github 코드를 기반으로 한 협업**  
