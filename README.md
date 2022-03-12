@@ -42,7 +42,6 @@ pip install -r requirements.txt
 
 ### 2) 다양한 Loss 학습 및 적용
 - **CrossEntropy Loss**   
-@@ -47,7 +47,7 @@ pip install -r requirements.txt
 F1 score가 정밀도(Precision, Positive로 예측한 것중 실제 Positive 비율)와 재현율(Recall, 실제 Positive인 것 중 Positive로 예측한 비율)을 함께 고려한 점수 metric인만큼, F1 Loss 역시 
 클래스 별로 정밀도 및 재현율을 함께 고려했을 것으로 생각되나, 좀 더 학습이 필요한 상황입니다. 
 
