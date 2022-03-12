@@ -12,13 +12,13 @@ pip install -r requirements.txt
 
 ### Structure Directory
 '''
-+- dataloader
-|  +- dataset.py
-+- model training 
-|  +- loss.py
-|  +- train.py
-+- model inference
-|  +- inference.py
++- dataloader  
+|  +- dataset.py  
++- model training  
+|  +- loss.py  
+|  +- train.py  
++- model inference  
+|  +- inference.py  
 |  +- sample_submission.ipynb
 '''
 
