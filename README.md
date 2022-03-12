@@ -10,8 +10,9 @@ COVID-19의 확산으로 우리나라는 물론 전 세계 사람들은 경제�
 pip install -r requirements.txt
 ```
 
+
 ### Structure Directory
-'''
+```
 +- dataloader  
 |  +- dataset.py  
 +- model training  
@@ -20,7 +21,7 @@ pip install -r requirements.txt
 +- model inference  
 |  +- inference.py  
 |  +- sample_submission.ipynb
-'''
+```
 
 (데이터의 경우, 부스트캠프 운영원칙에 따라 비공개하였습니다)
 
